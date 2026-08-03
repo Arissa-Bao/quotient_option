@@ -7,7 +7,7 @@ if strcmp(method,'MME')==1
     delta=0.000001;
 elseif strcmp(method,'MLE')==1
     delta=0.000000000000001;
-    num=ceil((n-1)*alpha)-1;    
+    num=ceil((n-1)*alpha)-1;    %
 elseif strcmp(method,'LSE')==1 
     delta=0.000001;  
 else
@@ -27,10 +27,10 @@ end
 %
     function [f2] = FunctionMLE(coeff)
         Residual=ResidualGenerate(coeff,delta,t,x,signal,UDE);
-        residual=sort(Residual);  
+        residual=sort(Residual);  %
         if num>=1
-            for i=1:num   
-                if residual(2)-residual(1)>residual(length(residual))-residual(length(residual)-1)   
+            for i=1:num   %
+                if residual(2)-residual(1)>residual(length(residual))-residual(length(residual)-1)   %
                     residual(1)=[];
                 else
                     residual(length(residual))=[];
@@ -39,7 +39,7 @@ end
         else
         end
         g=(residual(1)-alpha/2)^2+(residual(length(residual))+alpha/2-1)^2;
-        if residual(1)>=alpha/2 && residual(length(residual))<=1-alpha/2    
+        if residual(1)>=alpha/2 && residual(length(residual))<=1-alpha/2    %正常值的话
             f2=g;
         else
             f2=g+1;
@@ -76,7 +76,12 @@ end
     elseif strcmp(method,'MCE') == 1
         lb = [];
         ub = [];
-
+        % 
+        % 'interior-point'
+        % 'trust-region-reflective'：
+        % 'sqp'：
+        % 'sqp-legacy'：
+        % 'active-set'：
         options = optimoptions('fmincon', 'Algorithm', 'sqp');
         [coefficient,Fvar,Exitflag]=fmincon(@FunctionMCE,coeff0,[],[],[],[],lb,ub,@nonlconeg,options); 
     else

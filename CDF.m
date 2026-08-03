@@ -1,6 +1,7 @@
-
+%%
 function [f] = CDF(x)
 %UNTITLED2 
+%
 [~,i,~]=unique(x);
 y=x(sort(i));
 % y=sort(x);

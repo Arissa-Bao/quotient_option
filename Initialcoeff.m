@@ -7,7 +7,7 @@ Exitflag = 0;
     if n_param == 2
         for j=1:num_iterations
             j
-            coeff0_random=[0.0001*j,j*0.0001];   
+            coeff0_random=[0.0001*j,j*0.0001];   %
             [Parameter,fvar,exitflag]=Estimation(coeff0_random, t, x, alpha, signal, UDE, method);  
             if fvar <= best_MSE  
                 best_MSE = fvar;  
@@ -18,18 +18,18 @@ Exitflag = 0;
         end
 
     elseif n_param == 3
-         A=mean(x);   
+         A=mean(x);   % 
   %       A=1/mean(log(x)); 
         for i=1:num_iterations 
             i
     
-            coeff0_random=[A*i*0.005,i*0.005,1]; 
-     %       coeff0_random=[1,0.01*A*i,1]; %EOU
+            coeff0_random=[A*i*0.005,i*0.005,1]; %
+     %       coeff0_random=[1,0.01*A*i,1]; %
             [Parameter,fvar,exitflag] = Estimation(coeff0_random, t, x, alpha, signal, UDE, method);  
             if all(Parameter > 0) && fvar <= best_MSE  
                     best_MSE = fvar;  
                     coefficient = Parameter;  
-                    coeff0 = coeff0_random;  
+                    coeff0 = coeff0_random;  %  
                     Exitflag = exitflag;
              
             end  

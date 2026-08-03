@@ -1,11 +1,12 @@
 clear all
 %% 
 filenames = 'data.xlsx';
+
 T = readtable(filenames);
-% '2024-09-01'or'01/09/2024'
+% '2024-09-01'或'01/09/2024'
 T.partition_data = datetime(T.partition_data, 'InputFormat', 'yyyy-mm-dd');
 
-%% 2. 
+%%
 figure(1);
 plot(T.partition_data, T.zhongguo, 'b-', 'LineWidth', 1.5, 'DisplayName', 'Bank of China');
 hold on;
@@ -27,7 +28,6 @@ legend('Location', 'northeast', 'FontSize', 10);
 
 
 print('-depsc2', 'fig1.eps');
-
 
 
 
