@@ -39,7 +39,7 @@ end
         else
         end
         g=(residual(1)-alpha/2)^2+(residual(length(residual))+alpha/2-1)^2;
-        if residual(1)>=alpha/2 && residual(length(residual))<=1-alpha/2    %正常值的话
+        if residual(1)>=alpha/2 && residual(length(residual))<=1-alpha/2    %
             f2=g;
         else
             f2=g+1;
